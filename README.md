@@ -1,2 +1,2 @@
-# Hatch
-Hackathon Project
+# HTCH
+Technova Hackathon
