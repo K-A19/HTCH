@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Login form submission
   const loginButton = document.getElementById('login-button');
   loginButton.addEventListener('click', async (event) => {
+    console.log("Login Cloick FUCKING WORKS")
     event.preventDefault(); // Prevent form submission
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
