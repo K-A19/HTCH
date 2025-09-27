@@ -152,15 +152,14 @@ function checkAuth() {
 document.addEventListener('DOMContentLoaded', () => {
   // Login form submission
   const loginButton = document.getElementById('login-button');
-  if (loginButton) {
-    loginButton.addEventListener('click', async (event) => {
-      event.preventDefault(); // Prevent form submission
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const errorMessageElement = document.getElementById('error-message');
-      await handleLogin(email, password, errorMessageElement);
+  loginButton.addEventListener('click', async (event) => {
+    event.preventDefault(); // Prevent form submission
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const errorMessageElement = document.getElementById('error-message');
+    await handleLogin(email, password, errorMessageElement);
     });
-  }
+  
 
   // Signup form submission
   const signupButton = document.getElementById('signup-button');
