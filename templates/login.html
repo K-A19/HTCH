@@ -44,6 +44,9 @@
       window.location.href = "/templates/profile.html";
     } catch (error) {
       document.getElementById('error-message').textContent = error.message;
+       if (error.code === 'auth/user-not-found') {
+          window.location.href = "/templates/signup.html";
+        }
     }
   });
 </script>
