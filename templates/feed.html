@@ -6,6 +6,10 @@
     <title>Feed</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -37,20 +41,5 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/app.js"></script>
 </body>
 </html>
-<script>
-  // Check if user is logged in (only in browser)
-  if (typeof window !== 'undefined') {
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        // Redirect to login page
-        window.location.href = "/index.html";
-      }
-    });
-  }
-</script>

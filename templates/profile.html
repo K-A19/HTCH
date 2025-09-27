@@ -6,6 +6,11 @@
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -13,49 +18,22 @@
             <div class="col-md-6">
                 <h2>Profile</h2>
                 <div class="form-group">
-                    <label for="name">Name:</label>
+                    <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" value="John Doe" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" value="john.doe@example.com" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="bio">Bio:</label>
+                    <label for="bio">Bio</label>
                     <textarea class="form-control" id="bio" rows="3" disabled>A short bio about the user.</textarea>
                 </div>
                 <button class="btn btn-primary">Edit Profile</button>
                  <button class="btn btn-danger" id="logout-button">Log Out</button>
             </div>
         </div>
- <script>
- document.getElementById('logout-button').addEventListener('click', async (event) => {
-    event.preventDefault(); // Prevent form submission
-    try {
-      await logOut();
-      // Redirect to login page or display success message
-      window.location.href = "/templates/login.html";
-    } catch (error) {
-      // Display error message
-      alert("Error logging out:" + error.message);
-    }
-  });
-</script>
+
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/app.js"></script>
 </body>
 </html>
-<script>
-  // Check if user is logged in (only in browser)
-  if (typeof window !== 'undefined') {
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        // Redirect to login page
-        window.location.href = "/index.html";
-      }
-    });
-  }
-</script>
