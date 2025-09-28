@@ -69,7 +69,7 @@ def login():
         if not user:
             return render_template("register.html")
         
-        if password != user["password"]:
+        if not check_password_hash(user["password"], password):
             return render_template("login.html", error="Invalid email or password")
 
         session["user_id"] = user["_id"]
@@ -110,9 +110,9 @@ def register():
             return render_template("register.html", error="Passwords do not match")
 
         user_doc = {
-            "username": name,
+            "name": name,
             "email": email,
-            "hash": generate_password_hash(password),
+            "password": generate_password_hash(password),
         }
         result = users_col.insert_one(user_doc)
         session["user_id"] = result.inserted_id
