@@ -12,7 +12,7 @@ load_dotenv()
 # ----------------------------
 # Flask app setup
 # ----------------------------
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_PERMANENT"] = False
