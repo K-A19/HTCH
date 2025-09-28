@@ -3,7 +3,7 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
 from pymongo import MongoClient
-import os
+import requests, os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -45,14 +45,17 @@ def login_required(f):
 # Main dashboard / home
 # ----------------------------
 @app.route("/")
-@login_required
 def index():
 
-    return render_template("index.html", name=session['name'])
+    return render_template("index.html", name=session.get('name'))
 
 # ----------------------------
 # Login route
 # ----------------------------
+
+
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -124,47 +127,53 @@ def register():
 # ----------------------------
 # Change password
 # ----------------------------
-@app.route("/password", methods=["GET", "POST"])
-@login_required
-def password():
-    user = users_col.find_one({"_id": session["user_id"]})
-    if request.method == "POST":
-        c_password = request.form.get("c-password")
-        n_password = request.form.get("n-password")
-        confirmation = request.form.get("confirmation")
-
-        if not c_password or not n_password or not confirmation:
-            return "All fields required", 400
-        if not check_password_hash(user["hash"], c_password):
-            return "Incorrect current password", 403
-        if n_password != confirmation:
-            return "New password and confirmation do not match", 400
-
-        users_col.update_one(
-            {"_id": user["_id"]},
-            {"$set": {"hash": generate_password_hash(n_password)}}
-        )
-        return redirect("/")
-
-    return render_template("password.html")
 
 # ----------------------------
 # Search users / mentors
 # ----------------------------
-@app.route("/search", methods=["GET"])
+
+
+@app.route("/mentors")
 @login_required
-def search():
-    query = request.args.get("q", "")
-    industry_filter = request.args.get("industry", "")
+def mentors():
 
-    filters = {"_id": {"$ne": session["user_id"]}}
-    if query:
-        filters["username"] = {"$regex": query, "$options": "i"}
-    if industry_filter:
-        filters["industry"] = industry_filter
+    return render_template("mentors.html", name=session.get('name'))
 
-    results = list(users_col.find(filters))
-    return render_template("search.html", results=results)
+
+@app.route("/resources")
+@login_required
+def resources():
+
+    return render_template("resources.html", name=session.get('name'))
+
+
+@app.route("/events")
+@login_required
+def events():
+
+    return render_template("events.html", name=session.get('name'))
+
+
+@app.route("/game")
+@login_required
+def game():
+
+    return render_template("game.html", name=session.get('name'))
+
+
+@app.route("/messages")
+@login_required
+def messages():
+
+    return render_template("messages.html", name=session.get('name'))
+
+
+@app.route("/profile")
+@login_required
+def profile():
+
+    return render_template("profile.html", session=session)
+
 
 # ----------------------------
 # Run the app

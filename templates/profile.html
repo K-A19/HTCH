@@ -1,5 +1,8 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — My Profile</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Profile'))</script><main class='container'>
-<h2>My Profile</h2>
+{% extends "layout.html" %}
+{% block title %}Profile{% endblock %}
+{%block content%}
+  <main class='container'>
+<h2>{{name}}'s' Profile</h2>
 <div class="card">
   <div class="form-grid">
     <div>
@@ -8,11 +11,11 @@
     </div>
     <div>
       <div class="input-row">
-        <div class="input-col"><div class="label">First Name</div><input class="input" value="Alex"/></div>
+        <div class="input-col"><div class="label">First Name</div><input class="input" value="{{session.name}}"/></div>
         <div class="input-col"><div class="label">Last Name</div><input class="input" value="Rivera"/></div>
       </div>
       <div class="input-row">
-        <div class="input-col"><div class="label">Email</div><input class="input" value="alex.rivera@example.com"/></div>
+        <div class="input-col"><div class="label">Email</div><input class="input" value="{{session.email}}"/></div>
         <div class="input-col"><div class="label">Location</div><input class="input" value="Toronto, ON"/></div>
       </div>
       <div class="input-row">
@@ -25,6 +28,7 @@
     </div>
   </div>
 </div>
+
 
 <section style="margin-top:16px">
   <div class="card">
@@ -66,4 +70,5 @@
     PEOPLE.filter(p=> ids.includes(p.id)).forEach(p=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML=`<div class="m-head"><div class="m-avatar"><img src="${p.avatar}"/></div><div><div class="m-name">${p.name}</div><div class="m-role small">${p.role} — ${p.company}</div></div></div><div class="m-footer"><button class="btn" onclick="location.href='mentors.html?q=${encodeURIComponent(p.name)}'">View</button><button class="btn-primary">Message</button></div>`; savedWrap.appendChild(c); });
   })();
 </script>
-</main><script>document.write(HTCH_APP.footer())</script></body></html>
+</main>
+{% endblock %}

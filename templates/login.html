@@ -1,27 +1,28 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Sign Up / Login</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav(''))</script><main class='container'>
-<section class="login-hero">
-  <div class="login-card">
+<!doctype html><html lang='en' style="height:100%">
+    <head>
+        <meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>
+        <title>Login</title><link rel='stylesheet' href="{{ url_for('static', filename='css/styles.css') }}"/>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </head>
+    <body style="height:95%"> 
+        <a class="brand" style="height:5%; margin-top: 15px; margin-left: 10px;">
+        <img class="diamond" src="/static/images/htch_logo.png" alt="HTCH symbol"><span>HTCH</span>
+    </a>     
+<section class="login-hero" style="height:100%">
+    <form class="login-card" action="/login" method="post">
     <div class="login-tabs">
-      <div class="login-tab active" id="tabLogin">Login</div>
-      <div class="login-tab" id="tabSignup">Signup</div>
+      <a class="login-tab active" id="tabLogin" href="{{ url_for('login') }}">Login</a>
+      <a class="login-tab" id="tabSignup" href="{{ url_for('register') }}">Signup</a>
     </div>
     <div id="loginPane">
-      <div class="input-row"><button class="btn btn-linkedin" style="width:100%" onclick="alert('LinkedIn OAuth — demo')">Login with LinkedIn</button></div>
-      <div class="divider"></div>
-      <div class="label">Username</div><input class="input" placeholder="your_username"/>
-      <div class="m-footer" style="justify-content:flex-end"><button class="btn-primary" style="width:100%">Login</button></div>
+      <div class="label">Email</div><input class="input" type="email" class="form-control" id="email" name="email" placeholder="Email">
+      <div class="label">Password</div><input class="input" type="password" class="form-control" id="password" name="password" placeholder="Password">
+      <div class="m-footer" style="display:block; text-align: center;"><button style="text-align: center; width: 100%;" type="submit" class="btn btn-primary" id="login-button">Login</button><br><div class="divider"></div>
+                <p>Don't have an account? <a href="{{ url_for('register') }}" style="color: #22D3EE;">Sign up</a></p>
+                    <div id="error-message" style="color: red;">{% if error%}{{ error }}{% endif %}</div></div></div>
     </div>
-    <div id="signupPane" style="display:none">
-      <div class="input-row"><button class="btn btn-linkedin" style="width:100%" onclick="alert('LinkedIn OAuth — demo')">Sign up with LinkedIn</button></div>
-      <div class="divider"></div>
-      <div class="label">Username</div><input class="input" placeholder="your_username"/>
-      <div class="m-footer" style="justify-content:flex-end"><button class="btn-primary" style="width:100%">Create account</button></div>
-    </div>
-  </div>
+</form>
 </section>
-<script>
-  const a=document.getElementById('tabLogin'), b=document.getElementById('tabSignup');
-  a.onclick=()=>{ a.classList.add('active'); b.classList.remove('active'); loginPane.style.display='block'; signupPane.style.display='none'; };
-  b.onclick=()=>{ b.classList.add('active'); a.classList.remove('active'); loginPane.style.display='none'; signupPane.style.display='block'; };
-</script>
-</main><script>document.write(HTCH_APP.footer())</script></body></html>
+</main>
+<div class="container"><div class="line"></div><div style="font-size:12px;color:#627086">© 2025 HTCH</div></div></body></body></html>
+

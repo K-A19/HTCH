@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='css/styles.css') }}"/>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </head>
+    <body>
+    <header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="{{ url_for('index') }}">
+        <img class="diamond" src="{{ url_for('static', filename='images/htch_logo.png') }}" alt="HTCH symbol"><span>HTCH</span>
+      </a>
+      <div class="links">
+        <a class="" href="{{ url_for('mentors') }}">Find a Mentor</a>
+        <a class="" href="{{ url_for('resources') }}">Resources</a>
+        <a class="" href="{{ url_for('events') }}">Events</a>
+        <a class="" href="{{ url_for('game') }}">Networking Game</a>
+        <a class="" href="{{ url_for('messages') }}">Messages</a>
+        <a class="" href="{{ url_for('profile') }}">My Profile</a>
+      </div>
+      <div class="right">
+        {% if name %}
+        {{ name }}
+        {% else %}
+        <a class="btn btn-linkedin" href="{{ url_for('login') }}">Sign Up / Login</a>
+        {% endif%}
+      </div>
+    </nav>
+  </div>
+</header>
     {% block content %}{% endblock %}
-</body>
+    <div class="container"><div class="line"></div><div style="font-size:12px;color:#627086">© 2025 HTCH</div></div>
+    </body>
 </html>

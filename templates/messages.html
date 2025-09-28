@@ -1,8 +1,12 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Messages</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Messages'))</script><main class='container'>
+{% extends "layout.html" %}
+{% block title %}Messages{% endblock %}
+{%block content%}
+<main class='container'>
 <h2>Messages</h2>
 <div class="msg-grid">
   <div id="convList" class="card conv-list"></div>
   <div id="chatPane" style="display:flex;flex-direction:column;gap:12px"></div>
 </div>
 <script>HTCH_APP.initMessages();</script>
-</main><script>document.write(HTCH_APP.footer())</script></body></html>
+</main>
+{% endblock %}

@@ -1,4 +1,7 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Events</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Events'))</script><main class='container'>
+{% extends "layout.html" %}
+{% block title %}Events{% endblock %}
+{%block content%}
+  <main class='container'>
 <h2>Networking Event Finder</h2>
 <div class="toolbar">
   <div class="search"><span style="opacity:.8;display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center"><svg width='18' height='18' viewBox='0 0 24 24' fill='none'><circle cx='11' cy='11' r='7' stroke='currentColor' stroke-width='1.5' opacity='.7'/><line x1='21' y1='21' x2='16.65' y2='16.65' stroke='currentColor' stroke-width='1.5' opacity='.7'/></svg></span><input id="evtSearch" type="text" placeholder="Search events by name, city, or tag…"/></div>
@@ -42,4 +45,4 @@
 
 <section id="timeline" class="events-grid"></section>
 <script>HTCH_APP.initEvents();</script>
-</main><script>document.write(HTCH_APP.footer())</script></body></html>
+</main>{% endblock %}

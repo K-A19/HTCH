@@ -1,4 +1,7 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Find a Mentor</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Mentor Directory'))</script><main class='container'>
+{% extends "layout.html" %}
+{% block title %}Mentors{% endblock %}
+{%block content%}
+  <main class='container'>
 <section class="intro">
   <h1>Find a Mentor</h1>
   <p class="small">Filter by field, availability, specialities or more, then message or save your mentor to connect later.</p>
@@ -72,4 +75,5 @@
   </div>
 </div>
 <script>HTCH_APP.initDirectory();</script>
-</main><script>document.write(HTCH_APP.footer())</script></body></html>
+</main>
+{% endblock %}
