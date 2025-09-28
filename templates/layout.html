@@ -21,6 +21,7 @@
         <a class="" href="{{ url_for('game') }}">Networking Game</a>
         <a class="" href="{{ url_for('messages') }}">Messages</a>
         <a class="" href="{{ url_for('profile') }}">My Profile</a>
+        {%block active %}{% endblock %}
       </div>
       <div class="right">
         {% if name %}

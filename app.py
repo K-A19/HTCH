@@ -3,7 +3,7 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
 from pymongo import MongoClient
-import requests, os
+import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -172,7 +172,7 @@ def messages():
 @login_required
 def profile():
 
-    return render_template("profile.html", session=session)
+    return render_template("profile.html",  name=session.get('name'), session=session)
 
 
 # ----------------------------
