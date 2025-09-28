@@ -1,0 +1,40 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Resources</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Resources'))</script><main class='container'>
+<h2>Resources</h2>
+<section id="opportunities">
+  <div class="card">
+    <h3 style="margin:0 0 8px">Upcoming Mentor Opportunities</h3>
+    <div class="grid">
+      <div class="card">
+        <strong>AI Research Assistant — IBM Mentor Lab</strong><div class="small">by <a href="mentors.html?q=Grace%20Kim" style="color:var(--accent-2)">Grace Kim</a></div>
+        <div class="small">Remote • Part-time • Oct–Dec</div>
+        <div class="m-tags" style="margin-top:8px"><span class="tag">NLP</span><span class="tag">Python</span><span class="tag">Research</span></div>
+        <div class="m-footer"><button class="btn">Learn More</button><button class="btn-primary">Apply</button></div>
+      </div>
+      <div class="card">
+        <strong>Product Ops Intern — Datadog Mentorship</strong><div class="small">by <a href="mentors.html?q=Michael%20Chen" style="color:var(--accent-2)">Michael Chen</a></div>
+        <div class="small">NYC • 8–12 weeks</div>
+        <div class="m-tags" style="margin-top:8px"><span class="tag">Product</span><span class="tag">SQL</span><span class="tag">Experimentation</span></div>
+        <div class="m-footer"><button class="btn">Learn More</button><button class="btn-primary">Apply</button></div>
+      </div>
+      <div class="card">
+        <strong>Design Systems Fellow — Figma Community</strong><div class="small">by <a href="mentors.html?q=Nina%20Alvarez" style="color:var(--accent-2)">Nina Alvarez</a></div>
+        <div class="small">Remote • 6 weeks</div>
+        <div class="m-tags" style="margin-top:8px"><span class="tag">Design Systems</span><span class="tag">Figma</span></div>
+        <div class="m-footer"><button class="btn">Learn More</button><button class="btn-primary">Apply</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="practice-ai" style="margin-top:16px">
+  <div class="card">
+    <h3 style="margin:0 0 8px">Practice with AI</h3>
+    <div id="chat" style="min-height:220px;overflow:auto;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:12px;padding:12px"></div>
+    <div class="toolbar" style="margin-top:8px">
+      <input id="chatInput" type="text" placeholder="Ask for an elevator pitch or a cold intro draft..." style="flex:1;background:#0f1620;border:1px solid var(--line);padding:10px;border-radius:10px;color:var(--text)"/>
+      <button id="chatSend" class="btn-primary">Send</button>
+    </div>
+  </div>
+</section>
+<script>HTCH_APP.initPractice();</script>
+</main><script>document.write(HTCH_APP.footer())</script></body></html>

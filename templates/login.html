@@ -1,24 +1,27 @@
-{% extends "layout.html" %}
-{% block title %}Login{% endblock %}
-{% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                </div>
-                <button type="submit" class="btn btn-primary" id="login-button">Login</button>
-                <p>Don't have an account? <a href="{{ url_for('register') }}">Sign up</a></p>
-                    <div id="error-message" style="color: red;">{% if error%}{{ error }}{% endif %}</div>
-            </form>
-        </div>
+<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Sign Up / Login</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav(''))</script><main class='container'>
+<section class="login-hero">
+  <div class="login-card">
+    <div class="login-tabs">
+      <div class="login-tab active" id="tabLogin">Login</div>
+      <div class="login-tab" id="tabSignup">Signup</div>
     </div>
-</div>
-{% endblock %}
+    <div id="loginPane">
+      <div class="input-row"><button class="btn btn-linkedin" style="width:100%" onclick="alert('LinkedIn OAuth — demo')">Login with LinkedIn</button></div>
+      <div class="divider"></div>
+      <div class="label">Username</div><input class="input" placeholder="your_username"/>
+      <div class="m-footer" style="justify-content:flex-end"><button class="btn-primary" style="width:100%">Login</button></div>
+    </div>
+    <div id="signupPane" style="display:none">
+      <div class="input-row"><button class="btn btn-linkedin" style="width:100%" onclick="alert('LinkedIn OAuth — demo')">Sign up with LinkedIn</button></div>
+      <div class="divider"></div>
+      <div class="label">Username</div><input class="input" placeholder="your_username"/>
+      <div class="m-footer" style="justify-content:flex-end"><button class="btn-primary" style="width:100%">Create account</button></div>
+    </div>
+  </div>
+</section>
+<script>
+  const a=document.getElementById('tabLogin'), b=document.getElementById('tabSignup');
+  a.onclick=()=>{ a.classList.add('active'); b.classList.remove('active'); loginPane.style.display='block'; signupPane.style.display='none'; };
+  b.onclick=()=>{ b.classList.add('active'); a.classList.remove('active'); loginPane.style.display='none'; signupPane.style.display='block'; };
+</script>
+</main><script>document.write(HTCH_APP.footer())</script></body></html>

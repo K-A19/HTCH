@@ -1,25 +1,69 @@
-{% extends "layout.html" %}
-{% block title %}Profile{% endblock %}
-{% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2>Profile</h2>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" value="John Doe" disabled>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" value="john.doe@example.com" disabled>
-            </div>
-            <div class="form-group">
-                <label for="bio">Bio</label>
-                <textarea class="form-control" id="bio" rows="3" disabled>A short bio about the user.</textarea>
-            </div>
-            <button class="btn btn-primary">Edit Profile</button>
-            <button class="btn btn-danger" id="logout-button">Log Out</button>
-        </div>
+<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — My Profile</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Profile'))</script><main class='container'>
+<h2>My Profile</h2>
+<div class="card">
+  <div class="form-grid">
+    <div>
+      <div class="avatar-lg"><img src="https://i.pravatar.cc/300?img=24" alt="avatar"/></div>
+      <div class="m-footer" style="margin-top:10px"><button class="btn btn-linkedin">Sync with LinkedIn</button><label class="chip"><input type="checkbox" checked/> Open to connect</label></div>
     </div>
+    <div>
+      <div class="input-row">
+        <div class="input-col"><div class="label">First Name</div><input class="input" value="Alex"/></div>
+        <div class="input-col"><div class="label">Last Name</div><input class="input" value="Rivera"/></div>
+      </div>
+      <div class="input-row">
+        <div class="input-col"><div class="label">Email</div><input class="input" value="alex.rivera@example.com"/></div>
+        <div class="input-col"><div class="label">Location</div><input class="input" value="Toronto, ON"/></div>
+      </div>
+      <div class="input-row">
+        <div class="input-col"><div class="label">Headline</div><input class="input" value="CS Student & aspiring Data Scientist"/></div>
+      </div>
+      <div class="label" style="margin-top:8px">Professional Bio</div>
+      <textarea class="input" style="min-height:100px">Passionate CS student focused on data science and applied ML. Built a rental price predictor and a recsys demo; seeking mentorship for ML product roles.</textarea>
+      <div class="label" style="margin-top:8px">Specialties</div>
+      <div class="m-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ML</span><span class="tag">NLP</span></div>
+    </div>
+  </div>
 </div>
-{% endblock %}
+
+<section style="margin-top:16px">
+  <div class="card">
+    <h3>Experience & Credits</h3>
+    <div class="credit-line">
+      <strong>Data Analyst Intern — "Marketplace Insights"</strong>
+      <div class="small">Startup • 2024</div>
+      <div class="small" style="margin-top:6px">Built dashboards in SQL + Python; A/B tested pricing prompts (↑7% conversion).</div>
+    </div>
+    <div class="credit-line" style="border-left-color:#22d3ee">
+      <strong>Research Project — "Rental Price Predictor"</strong>
+      <div class="small">University • 2023</div>
+      <div class="small" style="margin-top:6px">Gradient boosting model with MAE 7%; deployed a simple demo app.</div>
+    </div>
+    <button class="btn" style="margin-top:8px">Add New Credit</button>
+  </div>
+</section>
+
+<section style="margin-top:16px" id="savedSec">
+  <div class="card">
+    <h3>Saved Mentors</h3>
+    <div id="savedMentors" class="grid" style="grid-template-columns:1fr 1fr"></div>
+  </div>
+</section>
+
+<section style="margin-top:16px">
+  <div class="card">
+    <h3>Privacy Settings</h3>
+    <label class="chip"><input type="checkbox" checked/> Show my profile to mentors</label>
+    <label class="chip"><input type="checkbox" checked/> Allow messages from alumni</label>
+    <label class="chip"><input type="checkbox"/> Share first name only by default</label>
+  </div>
+</section>
+<script>
+  (function(){
+    const savedWrap=document.getElementById('savedMentors');
+    const ids=JSON.parse(localStorage.getItem('HTCH_SAVED')||'[]');
+    savedWrap.innerHTML='';
+    PEOPLE.filter(p=> ids.includes(p.id)).forEach(p=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML=`<div class="m-head"><div class="m-avatar"><img src="${p.avatar}"/></div><div><div class="m-name">${p.name}</div><div class="m-role small">${p.role} — ${p.company}</div></div></div><div class="m-footer"><button class="btn" onclick="location.href='mentors.html?q=${encodeURIComponent(p.name)}'">View</button><button class="btn-primary">Message</button></div>`; savedWrap.appendChild(c); });
+  })();
+</script>
+</main><script>document.write(HTCH_APP.footer())</script></body></html>

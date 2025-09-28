@@ -1,0 +1,75 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Find a Mentor</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav('Mentor Directory'))</script><main class='container'>
+<section class="intro">
+  <h1>Find a Mentor</h1>
+  <p class="small">Filter by field, availability, specialities or more, then message or save your mentor to connect later.</p>
+</section>
+<div class="toolbar">
+  <div class="search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="1.5" opacity=".6"/></svg>
+    <input id="search" type="text" placeholder="Search by name, company, or specialty…"/>
+  </div>
+  <button class="filters-btn" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('backdrop').classList.add('open')">Filters</button>
+  <div class="chips" id="activeChips"></div>
+</div>
+<div id="cards" class="grid"></div>
+<button class="btn" id="loadMore">Load More</button>
+<aside id="drawer" class="drawer">
+  <h3 style="margin:6px 0 12px">Filters</h3>
+  <div class="field">
+    <label for="field">Job field</label>
+    <select id="field">
+      <option value="">All fields</option>
+      <option>Software Engineering</option>
+      <option>Data Science</option>
+      <option>Finance</option>
+      <option>Consulting</option>
+      <option>Product Management</option>
+      <option>UX Design</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Availability</label>
+    <label><input type="checkbox" id="openOnly"> Open to connect</label>
+    <label><input type="checkbox" id="unavailable"> Not available</label>
+  </div>
+  <div class="field">
+    <label>Gender</label>
+    <label><input type="radio" name="g" id="gAll" checked> All</label>
+    <label><input type="radio" name="g" id="gMale"> Male</label>
+    <label><input type="radio" name="g" id="gFemale"> Female</label>
+    <label><input type="radio" name="g" id="gOther"> Other</label>
+  </div>
+  <div class="field">
+    <label>Specialties (examples)</label>
+    <div class="chips">
+      <span class="chip" data-spec="ML">ML</span>
+      <span class="chip" data-spec="Cloud">Cloud</span>
+      <span class="chip" data-spec="FinTech">FinTech</span>
+      <span class="chip" data-spec="Accessibility">Accessibility</span>
+      <span class="chip" data-spec="A/B Testing">A/B Testing</span>
+    </div>
+  </div>
+  <button class="btn-primary apply" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('backdrop').classList.remove('open')">Apply</button>
+</aside>
+<div id="backdrop" class="drawer-backdrop" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
+
+<div id="modalBackdrop" class="modal-backdrop"></div>
+<div id="messageModal" class="modal" role="dialog" aria-modal="true">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div id="modalAvatar" class="m-avatar"></div>
+    <div>
+      <div class="m-name" id="modalName"></div>
+      <div class="small" id="modalRole"></div>
+    </div>
+    <button class="btn" style="margin-left:auto" onclick="document.getElementById('modalBackdrop').classList.remove('open');document.getElementById('messageModal').classList.remove('open')">Close</button>
+  </div>
+  <div class="divider"></div>
+  <label for="msgText" class="small">Message</label>
+  <textarea id="msgText"></textarea>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+    <button class="btn" onclick="document.getElementById('modalBackdrop').classList.remove('open');document.getElementById('messageModal').classList.remove('open')">Cancel</button>
+    <button id="sendBtn" class="btn-primary">Send</button>
+  </div>
+</div>
+<script>HTCH_APP.initDirectory();</script>
+</main><script>document.write(HTCH_APP.footer())</script></body></html>

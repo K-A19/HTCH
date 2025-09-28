@@ -1,33 +1,44 @@
-{% extends "layout.html" %}
-{% block title %}Feed{% endblock %}
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <h2>Hey, {{ name }}</h2>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Post Title</h5>
-                    <p class="card-text">Some quick example text to build on the post title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Another Post Title</h5>
-                    <p class="card-text">Some quick example text to build on the post title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h2>Trending</h2>
-            <ul>
-                <li><a href="#">Trending Topic 1</a></li>
-                <li><a href="#">Trending Topic 2</a></li>
-                <li><a href="#">Trending Topic 3</a></li>
-            </ul>
-        </div>
+<!doctype html><html lang='en'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/><title>HTCH — Home</title><link rel='stylesheet' href='assets/styles.css'/></head><body><script src='assets/app.js'></script><script>document.write(HTCH_APP.nav(''))</script><main class='container'>
+<section class="hero">
+  <div>
+    <h1>Connecting students to mentors who <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">deliver</span>.</h1>
+    <p class="small" style="font-size:15px;color:#cbd5e1">Find alumni and industry professionals, message with confidence, and grow your network safely.</p>
+    <div class="search-panel">
+      <div class="tab-row">
+        <div class="tab active" onclick="location.href='resources.html'">Find resources</div>
+        <div class="tab" onclick="location.href='mentors.html'">Browse mentors</div>
+      </div>
+      <div class="search-row">
+        <span style="opacity:.8;display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center"><svg width='18' height='18' viewBox='0 0 24 24' fill='none'><circle cx='11' cy='11' r='7' stroke='currentColor' stroke-width='1.5' opacity='.7'/><line x1='21' y1='21' x2='16.65' y2='16.65' stroke='currentColor' stroke-width='1.5' opacity='.7'/></svg></span>
+        <input id="homeSearch" placeholder="Search by field, skills, or keywords"/>
+        <button class="btn-primary" onclick="location.href='resources.html'">Search</button>
+      </div>
     </div>
-</div>
-{% endblock %}
+  </div>
+  <a class="hero-photo"><img src="assets/img/hero_people.jpg" alt="Professional mentors"/></a>
+</section>
+
+<section class="float-section">
+  <h2 class="float-title">Find your space.</h2>
+  <div id="floatWrap" class="float-wrap"></div>
+  <script>HTCH_APP.initFloating();</script>
+</section>
+
+<section style="margin:24px 0">
+  <div class="why-split">
+    <div class="why-card">
+      <h2 style="margin:0 0 4px">Why students love HTCH</h2>
+      <div class="why-item"><div class="why-icon">⚡</div><div>Connect directly with alumni and industry mentors — no cold guesswork.</div></div>
+      <div class="why-item"><div class="why-icon">🔎</div><div>See availability up front and filter by field, specialties, and location.</div></div>
+      <div class="why-item"><div class="why-icon">✍️</div><div>Built‑in AI coach for elevator pitches, cold intros, and follow‑ups.</div></div>
+      <div class="why-item"><div class="why-icon">🛡️</div><div>Safe‑space verification with partner schools & programs.</div></div>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,.04)">
+      <h2 style="margin:0 0 4px">Why mentors love HTCH</h2>
+      <div class="why-item"><div class="why-icon">🎯</div><div>Meet motivated students aligned to your field and interests.</div></div>
+      <div class="why-item"><div class="why-icon">⏱️</div><div>Toggle availability and handle messages in one streamlined inbox.</div></div>
+      <div class="why-item"><div class="why-icon">📈</div><div><strong>92%</strong> mentee satisfaction • <strong>2.3×</strong> reply rate • <strong>48h</strong> median response.</div></div>
+    </div>
+  </div>
+</section>
+</main><script>document.write(HTCH_APP.footer())</script></body></html>
