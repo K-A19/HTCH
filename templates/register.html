@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %} Register {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2>Sign Up</h2>
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmation">Confirm Passwords *</label>
+                    <input type="password" class="form-control" id="confirmation" name="confirmation" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary" id="signup-button">Sign Up</button>
+                <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+                <div id="error-message" style="color: red;">{% if error%}{{ error }}{% endif %}</div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

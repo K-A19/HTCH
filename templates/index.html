@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Feed{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Hey, {{ name }}</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post Title</h5>
+                    <p class="card-text">Some quick example text to build on the post title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Another Post Title</h5>
+                    <p class="card-text">Some quick example text to build on the post title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Trending</h2>
+            <ul>
+                <li><a href="#">Trending Topic 1</a></li>
+                <li><a href="#">Trending Topic 2</a></li>
+                <li><a href="#">Trending Topic 3</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
