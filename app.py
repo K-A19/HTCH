@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
+from game.views import game_bp
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
@@ -18,6 +19,12 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+@app.route("/game")
+def game_page():
+    return render_template("game.html")
+
+app.register_blueprint(game_bp)
 
 # ----------------------------
 # MongoDB setup
@@ -63,23 +70,22 @@ def login():
         password = request.form.get("password")
 
         if not email or not password:
-            return render_template("login.html", error="Username and password required")
-        
+            return render_template("login.html", error="Email and password required")
+
         user = users_col.find_one({"email": email})
-        if not user:
-            return render_template("register.html")
-        
-        if password != user["password"]:
+        # If user not found OR password wrong, show generic error
+        if not user or not check_password_hash(user.get("hash", ""), password):
             return render_template("login.html", error="Invalid email or password")
 
-        session["user_id"] = user["_id"]
-        session["name"] = user["name"]
+        session["user_id"] = str(user["_id"])
+        # you saved "username" at register — use it here
+        session["name"] = user.get("username", "User")
         return redirect("/")
 
     if "user_id" in session:
         return redirect("/")
-    else:
-        return render_template("login.html")
+    return render_template("login.html")
+
 
     
 
